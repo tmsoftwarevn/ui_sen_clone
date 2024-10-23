@@ -43,24 +43,26 @@ const Section_1 = dynamic(
   { ssr: false }
 );
 
+import SnowAnimation from "@/components/animation/SnowAnimation";
+
 const Home = () => {
   return (
     <div>
-      <div className="relative">
-        <Header />
-        <SlideHome />
-      </div>
-      {/* <Header /> */}
-
-      {/* <ParallaxProvider>
-       
+      <ParallaxProvider>
+        <div className="relative h-screen overflow-hidden">
+          <div className="relative z-50">
+            <Header />
+          </div>
           <SlideHome />
+        </div>
 
-          <Section_1 />
-        
-      </ParallaxProvider> */}
+        <Section_1 />
 
-      <Section_1 />
+        <div className="mt-20"></div>
+      </ParallaxProvider>
+
+      
+      {/* <SnowAnimation /> */}
 
       <Footer />
     </div>
@@ -68,3 +70,11 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /* <ParallaxProvider>
+          <SlideHome />
+
+          <Section_1 />
+        </ParallaxProvider> */
+}
