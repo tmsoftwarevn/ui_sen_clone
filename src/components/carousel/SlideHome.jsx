@@ -7,7 +7,7 @@ import "./bg_animation.scss";
 
 const slideImages = [
   {
-    url: "/s1.jpg",
+    url: "/s1.gif",
     caption: "Slide 1",
   },
   {
@@ -19,32 +19,31 @@ const slideImages = [
 const SlideHome = () => {
   const parallax = useParallax({
     speed: -50,
-    
   });
 
   return (
-    //ref={parallax.ref}
-    <div ref={parallax.ref} className="absolute left-0 top-0 w-full min-h-screen h-full" >
-      <Slide arrows={false} autoplay={false} indicators={false}>
-        {slideImages.map((slideImage, index) => (
-          <div
-            key={`fsdf${index}`}
-           
-          >
-            <Image
-              src={slideImage.url}
-              alt="sd"
-              loading="lazy"
-              width="0"
-              height="0"
-              sizes="100vw"
-              className="w-full h-screen object-cover"
-            />
-          
-          </div>
-        ))}
-      </Slide>
-    </div>
+    <ParallaxProvider>
+      <div
+        ref={parallax.ref}
+        className="absolute left-0 top-0 w-full min-h-screen h-full "
+      >
+        <Slide arrows={true} autoplay={false} indicators={false}>
+          {slideImages.map((slideImage, index) => (
+            <div key={`fsdf${index}`} className="">
+              <Image
+                src={slideImage.url}
+                alt="sd"
+                loading="lazy"
+                width="0"
+                height="0"
+                sizes="100vw"
+                className="w-full h-screen object-cover "
+              />
+            </div>
+          ))}
+        </Slide>
+      </div>
+    </ParallaxProvider>
   );
 };
 

@@ -1,0 +1,6 @@
+.scroll-content {
+    position: relative;
+    display: block;
+    overflow: hidden; /* Ensure that native scrolling doesn't interfere */
+    width: 100%;
+  }

@@ -10,6 +10,7 @@ import 'react-slideshow-image/dist/styles.css'
 import { Metadata } from "next";
 import { Roboto } from 'next/font/google';
 
+
 export const metadata: Metadata = {
   //metadataBase: new URL('https://tmbook.vn'),
   title: 'UI',
@@ -50,6 +51,7 @@ export default function RootLayout({
 
 
         {children}
+
 
 
       </body>
