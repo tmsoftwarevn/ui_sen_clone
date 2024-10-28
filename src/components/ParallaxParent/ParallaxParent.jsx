@@ -1,73 +1,32 @@
-'use client';
-import Image from "next/image";
+import { ParallaxBanner, ParallaxProvider } from "react-scroll-parallax";
+import { Slide } from "react-slideshow-image";
 
-import { useScroll, useTransform, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
-import Lenis from 'lenis';
+const slideImages = [
+  {
+    url: "/s1.gif",
+    caption: "Slide 1",
+  },
+  {
+    url: "/s2.jpg",
+    caption: "Slide 2",
+  },
+];
 
-export default function Home() {
-
-  const container = useRef();
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"]
-  }) 
-
-  useEffect( () => {
-    const lenis = new Lenis()
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-  }, [])
-
+const ParallaxParent = () => {
   return (
-    <main ref={container} className="relative h-[200vh]">
-      <Section1 scrollYProgress={scrollYProgress}/>
-      <Section2 scrollYProgress={scrollYProgress}/>
-    </main>
+    <ParallaxProvider>
+      <Slide arrows={true} autoplay={false} indicators={false}>
+        {slideImages.map((slideImage, index) => (
+          <div key={index}>
+            <ParallaxBanner
+              layers={[{ image: slideImage.url, speed: -15 }]}
+              className="aspect-[2/1]"
+            />
+          </div>
+        ))}
+      </Slide>
+    </ParallaxProvider>
   );
-}
+};
 
-const Section1 = ({scrollYProgress}) => {
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5])
-  return (
-    <motion.div style={{scale, rotate}} className="sticky top-0 h-screen bg-[#C72626] text-[3.5vw] flex flex-col items-center justify-center text-white pb-[10vh]">
-      <p>Scroll Perspective</p>
-      <div className="flex gap-4">
-        <p>Section</p>
-        <div className="relative w-[12.5vw]">
-          <Image 
-            src={'s1.jpg'}
-            alt="img"
-            placeholder="blur"
-            fill
-          />
-        </div>
-        <p>Transition</p>
-      </div>
-    </motion.div>
-  )
-}
-
-const Section2 = ({scrollYProgress}) => {
-
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [5, 0])
-
-  return (
-    <motion.div style={{scale, rotate}} className="relative h-screen">
-      <Image 
-        src={'s2.jpg'}
-        alt="img"
-        placeholder="blur"
-        fill
-      />
-    </motion.div>
-  )
-}
+export default ParallaxParent;
