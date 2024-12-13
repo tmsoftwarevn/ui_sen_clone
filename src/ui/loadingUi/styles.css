@@ -1,0 +1,41 @@
+/* Fullscreen container for loading animation */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: pink;
+  z-index: 9999; /* Ensures it stays on top */
+  opacity: 1; /* Initially visible */
+  transition: opacity 0s ease; /* Smooth fade-out transition */
+}
+
+.loading-container.hide {
+  opacity: 0; /* Fade out the loading container */
+  pointer-events: none; /* Prevent interaction with the loading container when hidden */
+}
+
+/* Background animation */
+.loading-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  animation: backgroundAnim 1s ease-out forwards; /* Animates the background */
+}
+
+/* Background animation (color change and sliding) */
+@keyframes backgroundAnim {
+  0% {
+    transform: translateX(100%); /* Start from the right */
+    background-color: black;
+  }
+  100% {
+    transform: translateX(0); /* Move to the left */
+    background-color: green; /* Change to green */
+  }
+}

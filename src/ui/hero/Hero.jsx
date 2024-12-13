@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   const tiltAnimation = (delay = 0) => ({
-    initial: { y: "100vh", rotate: 20, opacity: 0 }, // Start off-screen at the bottom, tilted
+    initial: { y: "40vh", rotate: 20, opacity: 0 }, // Start off-screen at the bottom, tilted
     animate: { y: 0, rotate: 0, opacity: 1 }, // Slide up, align angle, and fade in
     transition: { duration: 1, ease: "easeInOut", delay }, // Smooth transition
   });

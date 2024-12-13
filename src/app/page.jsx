@@ -5,10 +5,14 @@ import Footer from "@/components/layout user/footer/Footer";
 import Hero from "@/ui/hero/Hero";
 import Gif from "@/ui/hero/Gif";
 import ListBlog from "@/ui/blog/ListBlog";
+import LoadingUi from "@/ui/loadingUi/LoadingUi";
 
 const Home = () => {
   return (
     <div className="">
+
+    <LoadingUi />
+
       <Header />
 
       <Hero />
@@ -21,3 +25,4 @@ const Home = () => {
 };
 
 export default Home;
+
